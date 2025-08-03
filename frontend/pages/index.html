@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Platform - Offline Testing System</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Form -->
+        <div id="login-container" class="container">
+            <div class="login-form">
+                <h1>Code Platform</h1>
+                <p class="subtitle">Offline Programming Contest System</p>
+                <form id="login-form">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+                <div class="demo-credentials">
+                    <p><strong>Demo Credentials:</strong></p>
+                    <p>Username: <code>admin</code> | Password: <code>admin123</code></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-container" class="container" style="display: none;">
+            <div class="login-form">
+                <h1>Register</h1>
+                <p class="subtitle">Create your account</p>
+                <form id="register-form">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="full_name" placeholder="Full Name" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Register</button>
+                </form>
+                <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard-container" class="container" style="display: none;">
+            <header class="header">
+                <h1>Code Platform</h1>
+                <nav>
+                    <a href="#" data-tab="problems" class="active">Problems</a>
+                    <a href="#" data-tab="submissions">Submissions</a>
+                    <a href="#" data-tab="leaderboard">Leaderboard</a>
+                    <a href="#" id="logout">Logout</a>
+                </nav>
+            </header>
+
+            <main class="main-content">
+                <!-- Problems Tab -->
+                <div id="problems-tab" class="tab-content">
+                    <h2>Problem Repository</h2>
+                    <div class="filters">
+                        <select id="difficulty-filter">
+                            <option value="">All Difficulties</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                        <select id="category-filter">
+                            <option value="">All Categories</option>
+                            <option value="Arrays">Arrays</option>
+                            <option value="Strings">Strings</option>
+                            <option value="Dynamic Programming">Dynamic Programming</option>
+                            <option value="Graph Theory">Graph Theory</option>
+                        </select>
+                    </div>
+                    <div id="problems-list"></div>
+                </div>
+
+                <!-- Submissions Tab -->
+                <div id="submissions-tab" class="tab-content" style="display: none;">
+                    <h2>Your Submissions</h2>
+                    <div id="submissions-list"></div>
+                </div>
+
+                <!-- Leaderboard Tab -->
+                <div id="leaderboard-tab" class="tab-content" style="display: none;">
+                    <h2>Leaderboard</h2>
+                    <div id="leaderboard-list"></div>
+                </div>
+
+                <!-- Code Editor -->
+                <div id="code-editor" class="editor-container" style="display: none;">
+                    <div class="editor-header">
+                        <h3 id="problem-title"></h3>
+                        <div class="editor-controls">
+                            <select id="language-select">
+                                <option value="1">C++</option>
+                                <option value="2">Python</option>
+                                <option value="3">Java</option>
+                                <option value="4">PHP</option>
+                            </select>
+                            <button id="back-to-problems" onclick="document.getElementById('code-editor').style.display='none'; document.getElementById('problems-tab').style.display='block';">← Back</button>
+                        </div>
+                    </div>
+                    <div class="editor-body">
+                        <div class="problem-description" id="problem-description"></div>
+                        <div class="code-area">
+                            <textarea id="code-textarea" placeholder="Write your code here..."></textarea>
+                            <button id="submit-code">Submit Solution</button>
+                        </div>
+                    </div>
+                    <div id="submission-result"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
